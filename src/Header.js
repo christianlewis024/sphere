@@ -1,10 +1,17 @@
 import React from 'react'
 import "./Header.css"
 
+
 function Header() {
     return (
         <div className="header">
-           <h1>I am the header</h1> 
+           <div className="header__left">
+           <img src="logowithborder.png" alt=""/>
+           <div className="header__input">
+               <input placeholder="Search The Sphere"/> 
+           </div>
+           </div>
+           
         </div>
     )
 }
