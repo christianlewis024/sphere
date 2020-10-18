@@ -38,7 +38,8 @@ function Login() {
            
 
             <div className='login__container'>
-                <h1>Sign-in</h1>
+                <img className="login__image" src="logowithborder.png"/>
+                <h1>Sign-in </h1>
 
                 <form>
                     <h5>E-mail</h5>
@@ -50,7 +51,7 @@ function Login() {
                     <button type='submit' onClick={signIn} className='login__signInButton'>Sign In</button>
                 </form>
 
-                <p>Or create a new account </p>
+                <p>Or create a new Sphere account with the above info. <hr/> By creating a new account you agree to the Sphere TOS and your account can be terminated any time! <hr/>We recomend you can create an account with a fake email, such as blah@test.com or bob@test.com <hr/> This is a test app, please do not use any security sensitive account details on here.</p>
 
                 <button onClick={register} className='login__registerButton'>Create your Account</button>
             </div>
