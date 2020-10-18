@@ -1,10 +1,12 @@
 import React from 'react'
 import "./Feed.css"
 import Post from "./Post"
+import PostInput from "./PostInput"
 
 function Feed() {
     return (
         <div className="feed">
+            <PostInput/>
             <Post
                 key="123"
                 likes={4}            
