@@ -1,0 +1,13 @@
+.app__body {
+  display: flex;
+  background-color: rgba(158, 158, 241, 0.473);
+}
+body {
+  font-family: "Telex", sans-serif;
+}
+.app__banner > img {
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}

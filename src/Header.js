@@ -24,9 +24,7 @@ function Header() {
                <div className="header__option">
                    <h4>Posts</h4>
                </div>
-               <div className="header__option">
-                   <h4>Inbox</h4>
-               </div>
+               
            </div>
            <div className="header__right">
                

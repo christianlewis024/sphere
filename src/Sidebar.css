@@ -1,0 +1,118 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  border-right: 2px solid #7567ad;
+  border-bottom: 2px solid #7567ad;
+  background-color: rgb(158, 158, 241);
+  z-index: 100;
+  height: 100%;
+  /* position: sticky;
+  top: 57px; */
+  color: rgb(70, 68, 68);
+}
+.sidebar__greeting {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  margin-left: 2%;
+}
+.sidebar__links {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-left: 2%;
+  /* width: 100%; */
+  justify-content: center;
+}
+.sidebar__links:hover {
+  background-color: #7567ad;
+  color: white;
+}
+
+.Collapsible__trigger {
+  font-size: 30px;
+}
+.Collapsible__contentInner {
+  font-size: 20px;
+}
+.Collapsible__contentInner > p {
+  font-size: 10px;
+}
+.sidebar__inbox {
+  display: flex;
+  cursor: pointer;
+  width: 100%;
+  max-height: 500px;
+}
+.sidebar__inbox h5 {
+  margin-left: 2%;
+}
+.sidebar__borderBottom {
+  border-bottom: 2px solid #7567ad;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.sidebar__borderBottom:hover {
+  background-color: #7567ad;
+  color: white;
+}
+
+.sidebar__inbox > .Collapsible {
+  width: 100%;
+}
+.sidebar__inboxOption {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  margin-left: 2%;
+}
+.sidebar__inboxOption:hover {
+  background-color: #7567ad;
+  color: white;
+}
+.sidebar__inboxItems {
+  overflow-y: scroll;
+  max-height: 400px;
+}
+
+.sidebar__rooms {
+  display: flex;
+  cursor: pointer;
+  max-height: 400px;
+}
+.Collapsible__contentOuter {
+  object-fit: contain;
+  max-height: 100%;
+}
+.sidebar__rooms > .Collapsible {
+  width: 100%;
+}
+.sidebar__rooms h5 {
+  margin-left: 2%;
+}
+.sidebar__roomItems {
+  overflow-y: scroll;
+  max-height: 280px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #7567ad38;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #7567ad;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #7567ad;
+}
