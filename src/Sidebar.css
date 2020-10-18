@@ -1,0 +1,13 @@
+.Collapsible__trigger {
+  font-size: 30px;
+}
+.Collapsible__contentInner {
+  font-size: 20px;
+}
+.Collapsible__contentInner > p {
+  font-size: 10px;
+}
+.sidebar__inbox {
+  display: flex;
+  cursor: pointer;
+}
