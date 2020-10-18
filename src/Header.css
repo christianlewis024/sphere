@@ -43,23 +43,18 @@
   justify-content: flex-end;
   margin-right: 5%;
 }
-.header__login {
-  margin-left: 10%;
-  margin-right: 3%;
-  color: white;
-  padding: 4%;
-  border-radius: 20px;
-}
-.header__login:hover {
-  background-color: #7567ad;
-  cursor: pointer;
-}
+
 .header__option {
   padding: 3%;
   color: white;
-
   border-radius: 20px;
 }
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
 .header__option:hover {
   background-color: #7567ad;
   cursor: pointer;
