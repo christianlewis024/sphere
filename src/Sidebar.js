@@ -4,23 +4,21 @@ import Collapsible from "react-collapsible"
 import MailOutlineIcon from "@material-ui/icons/MailOutline"
 import GroupOutlinedIcon from "@material-ui/icons/GroupOutlined"
 import GroupAddOutlinedIcon from "@material-ui/icons/GroupAddOutlined"
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
 function Sidebar() {
     return (
         <div className="sidebar">
             <div className="sidebar__top">
-                <h1> Welcome Christian</h1>
+                <h2> Welcome Christian</h2>
                 <h2>Your Profile</h2>
                 <h2>New Post + </h2>
             </div>
             <div className="sidebar__bottom">
                 <div className="sidebar__inbox">
-                <Collapsible  className="sidebar__collapsible" trigger="Inbox" triggerSibling={() => (
-              <>
-                 <MailOutlineIcon/>
-               </>
-            )} triggerlazyRender="true"
+                <Collapsible  className="sidebar__collapsible" trigger={<div className="inbox__collapsibleHeader">Your Inbox  <MailOutlineIcon/></div>}  triggerlazyRender="true"
             transitionTime={200}>
+                <h5>Send Private Message <AddCircleOutlineIcon/></h5>
                     <h5 className="sidebar__inboxOption">Christian & Robby</h5>
                     <h5 className="sidebar__inboxOption">Christian & Bob</h5>
                     <h5 className="sidebar__inboxOption">Christian & Billy</h5>
@@ -28,13 +26,9 @@ function Sidebar() {
                 </Collapsible>
                 </div>
                 <div className="sidebar__rooms">
-                <Collapsible  className="sidebar__collapsible" trigger="Rooms" triggerSibling={() => (
-              <>
-                 <GroupOutlinedIcon/>
-               </>
-            )} triggerlazyRender="true"
+                <Collapsible  className="sidebar__collapsible" trigger={<div className="inbox__collapsibleHeader">Public Rooms  <MailOutlineIcon/></div>} triggerlazyRender="true"
             transitionTime={200}>
-                <h5><strong>Create a new room</strong> <GroupAddOutlinedIcon/></h5>
+                <h5 className="sidebar__roomHeader">Create a new room <GroupAddOutlinedIcon/></h5>
                     <h5 className="sidebar__inboxOption">General chat</h5>
                     <h5 className="sidebar__inboxOption">Trade Chat</h5>
                     <h5 className="sidebar__inboxOption">Local Defense</h5>
