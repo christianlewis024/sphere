@@ -43,9 +43,6 @@
 .postInput__photoUpload {
   width: 40%;
 }
-.postInput__bottom > button {
-  display: none;
-}
 
 .postInput__input {
   flex: 1;
