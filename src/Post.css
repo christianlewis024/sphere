@@ -1,52 +1,35 @@
 .post {
-  width: 90%;
+  width: 70%;
   margin-top: 15px;
   border-radius: 15px;
   background-color: rgb(158, 158, 241);
-  box-shadow: 10px 10px 7px -7px rgba(0, 0, 0, 0.75);
   border: 2px solid #7567ad;
+  margin: 0 auto;
+  margin-bottom: 2%;
 }
-
-.post__top {
+.post__header {
   display: flex;
-  position: relative;
+  margin-left: 4%;
+  margin-top: 2%;
+  width: 27%;
   align-items: center;
-  padding: 15px;
   justify-content: space-between;
 }
-.post__authorInfo {
-  display: flex;
+
+.post__timestamp {
+  margin-left: 4%;
 }
-.post__likes {
-  display: flex;
-}
-.post__avatar {
-  margin-right: 10px;
+.post__text {
+  padding-bottom: 2%;
+  margin-left: 4%;
+  margin-bottom: 1%;
+  margin-top: 2%;
+  font-weight: 700;
+  border-bottom: 1px solid black;
+  width: 90%;
 }
 
-.post__topInfo > h3 {
-  font-size: medium;
-}
-
-.post__topInfo > p {
-  font-size: small;
-  color: gray;
-}
-
-.post__bottom {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  padding: 15px 25px;
-}
-.post__bottom > p {
-  margin-bottom: 2%;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  max-height: 200px;
-  overflow-y: scroll;
-}
-
-.post__image > img {
+.post__image {
   width: 100%;
   margin-left: 2%;
   margin-bottom: 2%;
@@ -54,42 +37,15 @@
   object-fit: contain;
   max-height: 300px;
 }
-
-.post__options {
-  padding-top: 10px;
-  border-top: 1px solid lightgray;
-  display: flex;
-  justify-content: space-evenly;
-  font-size: medium;
-  color: white;
-  cursor: pointer;
-  padding: 15px;
+.post__comments {
+  max-height: 220px;
+  overflow-y: scroll;
+  margin-left: 4%;
+  margin-bottom: 2%;
 }
-
-.post__option {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 5px;
-  flex: 1;
-}
-
-.post__option > p {
-  margin-left: 10px;
-}
-
-.post__option:hover {
-  color: white;
-  background-color: #7567ad;
-  border-radius: 10px;
-}
-/* Hide scrollbar for Chrome, Safari and Opera */
-.feed::-webkit-scrollbar {
-  display: none;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-.feed {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+.post__input {
+  margin-bottom: 2%;
+  margin-left: 4%;
+  width: 80%;
+  height: 30px;
 }
