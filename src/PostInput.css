@@ -85,3 +85,6 @@
 .postInput__file {
   cursor: pointer;
 }
+.postInput__progress {
+  width: 100%;
+}

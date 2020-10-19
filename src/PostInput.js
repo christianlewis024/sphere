@@ -13,6 +13,7 @@ function PostInput() {
     const [progress, setProgress] = useState(0);
     const [caption, setCaption] = useState("");
     const [{user}, dispatch] = useStateValue();
+    const [loading, setLoading] = useState(false);
 
     const handleChange = (e) => {
         if (e.target.files[0])  {
@@ -20,7 +21,7 @@ function PostInput() {
         }
       };
       const handleUpload = () => {
-          
+          setLoading(true)
         const uploadTask = storage.ref("images/" + image.name).put(image) 
         uploadTask.on(
           "state_changed",
@@ -57,6 +58,7 @@ function PostInput() {
                 setProgress(0);
                 setCaption("");
                 setImageUrl("");
+                setLoading(false)
               });
           }
         );
@@ -77,16 +79,28 @@ function PostInput() {
                     />
                     </div>
                     <div className="postInput__bottom">
-                    <input type="file" className="postInput__file"  onChange={handleChange}
+                    <input type="file"  className="postInput__file"  onChange={handleChange}
                     placeholder={`image URL (Optional)`} 
-                    /> 
-                    <button className="postInput__button"
+                    /> {loading ? (
+                      <Loader
+                      type="TailSpin"
+                      color="white"
+                      height={45}
+                      width={45}
+                      timeout={10000} //10 secs
+                    />
+                    ) : (
+                      <button className="postInput__button"
                              onClick={handleUpload} >
-                        Submit Post
+                        Submit Photo
                     </button>
+                    )}
+                     
+                    
+                   
                     
                     </div>
-                    <progress className="imageupload_progress" value={progress} max="100" />
+                    <progress className="postInput__progress" value={progress} max="100" />
            
  
             
