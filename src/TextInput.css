@@ -1,0 +1,30 @@
+.textInput {
+  margin-top: 2%;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(132, 132, 218);
+  border-radius: 15px;
+  box-shadow: 0px 5px 7px -7px rgb(0, 0, 0.75);
+  width: 90%;
+  box-shadow: 10px 10px 7px -7px rgba(0, 0, 0, 0.75);
+  border: 1px solid #7567ad;
+}
+
+.textInput__input {
+  outline-width: 0;
+  border: none;
+  padding: 5px 20px;
+  border-radius: 10px;
+  background-color: #eff2f5;
+  font-family: "Telex", sans-serif;
+
+  height: 150px;
+}
+.textInput__textarea {
+  max-width: 90%;
+}
+
+.textInput__top {
+  display: grid;
+  place-items: center;
+}

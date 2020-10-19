@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 
 
 function Header() {
-    const [{ basket, user }, dispatch] = useStateValue();
+    const [{ user }, dispatch] = useStateValue();
     const login = () => {
         if (user) {
             auth.signOut();
@@ -47,7 +47,7 @@ function Header() {
            
                <div className="header__avatar">
                <Avatar
-               src="https://pbs.twimg.com/profile_images/1289438305969254402/UBOYNi2s_400x400.jpg"/>
+               src={user.photoURL}/>
                </div>
            </div>
            

@@ -1,31 +1,91 @@
-import React from 'react'
-import { Avatar } from '@material-ui/core';
+import React, { useState } from "react";
+import firebase from "firebase";
+import { storage, db } from "./firebase";
+import {Avatar} from "@material-ui/core"
 import "./PostInput.css"
-import VideocamIcon from '@material-ui/icons/Videocam';
-import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
-import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
+import {useStateValue} from "./StateProvider";
+
 
 function PostInput() {
+    const [image, setImage] = useState(null);
+    const [imageUrl, setImageUrl] = useState("");
+    const [progress, setProgress] = useState(0);
+    const [caption, setCaption] = useState("");
+    const [{user}, dispatch] = useStateValue();
+
+    const handleChange = (e) => {
+        if (e.target.files[0])  {
+          setImage(e.target.files[0]) ;
+        }
+      };
+      const handleUpload = () => {
+          
+        const uploadTask = storage.ref("images/" + image.name).put(image) 
+        uploadTask.on(
+          "state_changed",
+          (snapshot) => {
+            // progress function ...
+            const progress = Math.round(
+              (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+            );
+            setProgress(progress);
+          },
+          (error) => {
+            // Error function ...
+            console.log(error);
+          },
+          () => {
+            // complete function ...
+            storage
+              .ref("images")
+              .child(image.name)
+              .getDownloadURL()
+              .then((imageUrl) => {
+                setImageUrl(imageUrl);
+    
+                // post image inside db
+                db.collection("posts").add({
+                  imageUrl: imageUrl ,
+                  caption: caption,
+                  username: user.displayName,
+                  timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                  likes: 0,
+                  userImage: user.photoURL
+                });
+    
+                setProgress(0);
+                setCaption("");
+                setImageUrl("");
+              });
+          }
+        );
+      };
+    
     return (
         <div className="postInput">
           
-                <Avatar  className="postInput__avatar"src="https://pbs.twimg.com/profile_images/1289438305969254402/UBOYNi2s_400x400.jpg"/>
-                <form>
+                <Avatar  className="postInput__avatar"src={user.photoURL}/>
+               
+               
                 <div className="postInput__top">
-                    <textarea
+                    <input
                         className="postInput__input"
                         placeholder="Update Status"
+                        value={caption}
+                        onChange={(e) => setCaption(e.target.value)}
                     />
                     </div>
                     <div className="postInput__bottom">
-                    <input type="file"
-                    placeholder={`image URL (Optional)`}
-                    />
-                    <button >
-                        Hidden Submit
+                    <input type="file"  onChange={handleChange}
+                    placeholder={`image URL (Optional)`} 
+                    /> 
+                    <button className="imageupload_button"
+                             onClick={handleUpload} >
+                        Submit Post
                     </button>
+                    
                     </div>
-                </form>
+                    <progress className="imageupload_progress" value={progress} max="100" />
            
  
             

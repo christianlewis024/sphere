@@ -1,57 +1,57 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import "./Feed.css"
 import Post from "./Post"
 import PostInput from "./PostInput"
+import {db} from "./firebase"
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
+import TextInput from "./TextInput"
 
-function Feed() {
+function Feed({user}) {
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {       
+        db.collection("posts")
+          .orderBy("timestamp", "desc")
+          .onSnapshot((snapshot) => {
+            setPosts(
+              snapshot.docs.map((doc) => ({
+                id: doc.id,
+                post: doc.data(),
+              }))
+            );
+          });
+        
+      }, []);
     return (
         <div className="feed">
-            <PostInput/>
+            <Tabs>
+                <TabList>
+                    <Tab>New post and or GIF</Tab>
+                    <Tab>Upload a Photo</Tab>
+                </TabList>
+                <TabPanel>
+                <h2><TextInput/></h2>
+                </TabPanel>
+                <TabPanel>
+                <PostInput/>
+                </TabPanel>
+            </Tabs>
+            
+            {posts.map(({ id, post }) => (
             <Post
-                key="123"
-                likes={4}            
-                profilePic="https://upload.wikimedia.org/wikipedia/en/8/8a/KingLouie.jpg"
-                message="I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post!  I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! "                
-                username="Christian"
-                timestamp="2/22/22 2:22:22"
-                image="https://www.awaltzthroughdisney.com/uploads/6/2/7/6/6276678/9560980_orig.jpg"
-                />
-            <Post
-                key="123"
-                likes={4}
-                profilePic="https://upload.wikimedia.org/wikipedia/en/8/8a/KingLouie.jpg"
-                message="Mans red fire! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! "                
-                username="Christian"
-                timestamp="2/22/22 2:22:22"
-                image="https://www.awaltzthroughdisney.com/uploads/6/2/7/6/6276678/9560980_orig.jpg"
-                />
-            <Post
-                key="123"
-                likes={4}
-                profilePic="https://upload.wikimedia.org/wikipedia/en/8/8a/KingLouie.jpg"
-                message="Mans red fire! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! I am going to test a longer post! "                
-                username="Christian"
-                timestamp="2/22/22 2:22:22"
-                image="https://www.awaltzthroughdisney.com/uploads/6/2/7/6/6276678/9560980_orig.jpg"
-                />
-            <Post
-                key="123"
-                likes={4}
-                profilePic="https://upload.wikimedia.org/wikipedia/en/8/8a/KingLouie.jpg"
-                message="Mans red fire!"                
-                username="Christian"
-                timestamp="2/22/22 2:22:22"
-                image="https://www.awaltzthroughdisney.com/uploads/6/2/7/6/6276678/9560980_orig.jpg"
-                />
-            <Post
-                key="123"
-                likes={4}
-                profilePic="https://upload.wikimedia.org/wikipedia/en/8/8a/KingLouie.jpg"
-                message="Mans red fire!"                
-                username="Christian"
-                timestamp="2/22/22 2:22:22"
-                image="https://www.awaltzthroughdisney.com/uploads/6/2/7/6/6276678/9560980_orig.jpg"
-                />
+              user={user}
+              key={id}
+              postId={id}
+              username={post.username}
+              caption={post.caption}
+              imageUrl={post.imageUrl}
+              likes={post.likes}
+              userImage={post.userImage}
+              timestamp={post.timestamp}
+
+            />
+          ))}
         </div>
        
     )

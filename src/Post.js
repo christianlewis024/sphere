@@ -1,27 +1,31 @@
 import React from 'react'
 import {Avatar} from "@material-ui/core";
 import "./Post.css"
+import Moment from 'react-moment';
+import 'moment-timezone';
 
-function Post({ profilePic, image, username, timestamp, message, likes}) {
+
+function Post({  imageUrl, username, timestamp, caption, likes, userImage}) {
+    
     return (
         <div className="post">
          <div className="post__top">
              <div className="post__authorInfo">
-             <Avatar src={profilePic} className="post__avatar"/>
+             <Avatar src={userImage} className="post__avatar"/>
              <div className="post__topInfo">
                  <h3>{username}</h3>
-                 <p>{timestamp}</p>
+                 <p><span className="message__timestamp"><Moment format="YYYY-MM-DD HH:mm"tz="Los_Angeles">{new Date(timestamp?.toDate()).toUTCString()}</Moment></span></p>
              </div>
              </div>
              <div className="post__likes">
-         <h3>{likes} likes</h3>
+         <h3>{[likes]} likes</h3>
          </div>
          </div>
          
          <div className="post__bottom">
-             <p>{message}</p>
+             <p>{caption}</p>
           <div className="post__image">
-             <img src={image} alt=""/>
+             <img src={imageUrl} alt=""/>
          </div>
          <div className="post__options">
                     <div className='post__option'>                        
