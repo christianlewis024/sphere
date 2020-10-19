@@ -2,12 +2,14 @@ import React from 'react'
 import {Avatar} from "@material-ui/core";
 import "./Post.css"
 
-function Post({ profilePic, imageUrl, username, timestamp, caption, likes}) {
+
+function Post({  imageUrl, username, timestamp, caption, likes, userImage}) {
+    
     return (
         <div className="post">
          <div className="post__top">
              <div className="post__authorInfo">
-             <Avatar src={profilePic} className="post__avatar"/>
+             <Avatar src={userImage} className="post__avatar"/>
              <div className="post__topInfo">
                  <h3>{username}</h3>
                  <p>{timestamp}</p>

@@ -5,13 +5,15 @@ import MailOutlineIcon from "@material-ui/icons/MailOutline"
 import GroupOutlinedIcon from "@material-ui/icons/GroupOutlined"
 import GroupAddOutlinedIcon from "@material-ui/icons/GroupAddOutlined"
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import {useStateValue} from "./StateProvider";
 
 function Sidebar() {
+    const [{user}, dispatch] = useStateValue();
     return (
         <div className="sidebar">
             <div className="sidebar__top">
                 <div className="sidebar__greeting">
-                <h2> Welcome Christian</h2>
+                <h2> Welcome {user.displayName}</h2>
                 </div>
                 <div className="sidebar__links">
                 <h2>Your Profile</h2>

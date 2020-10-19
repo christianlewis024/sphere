@@ -6,7 +6,7 @@ import "./PostInput.css"
 import {useStateValue} from "./StateProvider";
 
 
-function PostInput({username}) {
+function PostInput() {
     const [image, setImage] = useState(null);
     const [imageUrl, setImageUrl] = useState("");
     const [progress, setProgress] = useState(0);
@@ -18,8 +18,6 @@ function PostInput({username}) {
           setImage(e.target.files[0]);
         }
       };
-      
-     
       const handleUpload = () => {
         const uploadTask = storage.ref(`images/${image.name}`).put(image);
         uploadTask.on(
@@ -55,8 +53,7 @@ function PostInput({username}) {
     
                 setProgress(0);
                 setCaption("");
-               
-                
+                setImageUrl("");
               });
           }
         );

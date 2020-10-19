@@ -7,8 +7,7 @@ import {db} from "./firebase"
 function Feed({user}) {
     const [posts, setPosts] = useState([]);
 
-    useEffect(() => {
-        // code runs here
+    useEffect(() => {       
         db.collection("posts")
           .orderBy("timestamp", "desc")
           .onSnapshot((snapshot) => {
@@ -19,7 +18,7 @@ function Feed({user}) {
               }))
             );
           });
-        // onSnapshot is a powerful listener. Every single time the database changes, added, modified, its like a camera and takes a snapshot of exactly what the database looks like, when someone adds to DB its going to update instantly
+        
       }, []);
     return (
         <div className="feed">
@@ -33,6 +32,8 @@ function Feed({user}) {
               caption={post.caption}
               imageUrl={post.imageUrl}
               likes={post.likes}
+              userImage={post.userImage}
+
             />
           ))}
         </div>
