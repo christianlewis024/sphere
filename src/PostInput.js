@@ -4,6 +4,7 @@ import { storage, db } from "./firebase";
 import {Avatar} from "@material-ui/core"
 import "./PostInput.css"
 import {useStateValue} from "./StateProvider";
+import Loader from 'react-loader-spinner'
 
 
 function PostInput() {
@@ -76,10 +77,10 @@ function PostInput() {
                     />
                     </div>
                     <div className="postInput__bottom">
-                    <input type="file"  onChange={handleChange}
+                    <input type="file" className="postInput__file"  onChange={handleChange}
                     placeholder={`image URL (Optional)`} 
                     /> 
-                    <button className="imageupload_button"
+                    <button className="postInput__button"
                              onClick={handleUpload} >
                         Submit Post
                     </button>

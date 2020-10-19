@@ -49,12 +49,13 @@ function TextInput() {
                     <div>
                     <input
                         value={imageUrl}
+                        className="textInput__url"
                         onChange={(e) => setImageUrl(e.target.value)}   
                         placeholder={`gif or photo URL`}
                     />
                     </div>
 
-                    <button  onClick={handleSubmit}type="submit">
+                    <button  className="textInput__button"onClick={handleSubmit}type="submit">
                         Submit
                     </button>
                 </form>
