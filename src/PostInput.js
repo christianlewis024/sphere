@@ -70,7 +70,7 @@ function PostInput() {
                 <div className="postInput__top">
                     <input
                         className="postInput__input"
-                        placeholder="Update Status"
+                        placeholder="Photo Caption"
                         value={caption}
                         onChange={(e) => setCaption(e.target.value)}
                     />

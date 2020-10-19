@@ -27,4 +27,9 @@
 .textInput__top {
   display: grid;
   place-items: center;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+.MuiAvatar-root {
+  margin-bottom: 2%;
 }

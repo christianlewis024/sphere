@@ -55,7 +55,7 @@ function TextInput() {
                     </div>
 
                     <button  onClick={handleSubmit}type="submit">
-                        Hidden Submit
+                        Submit
                     </button>
                 </form>
             </div>  
