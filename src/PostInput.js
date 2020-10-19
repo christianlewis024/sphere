@@ -14,12 +14,13 @@ function PostInput() {
     const [{user}, dispatch] = useStateValue();
 
     const handleChange = (e) => {
-        if (e.target.files[0]) {
-          setImage(e.target.files[0]);
+        if (e.target.files[0])  {
+          setImage(e.target.files[0]) ;
         }
       };
       const handleUpload = () => {
-        const uploadTask = storage.ref(`images/${image.name}`).put(image);
+          
+        const uploadTask = storage.ref("images/" + image.name).put(image) 
         uploadTask.on(
           "state_changed",
           (snapshot) => {
@@ -44,11 +45,12 @@ function PostInput() {
     
                 // post image inside db
                 db.collection("posts").add({
-                  imageUrl: imageUrl,
+                  imageUrl: imageUrl ,
                   caption: caption,
                   username: user.displayName,
                   timestamp: firebase.firestore.FieldValue.serverTimestamp(),
                   likes: 0,
+                  userImage: user.photoURL
                 });
     
                 setProgress(0);
@@ -62,7 +64,7 @@ function PostInput() {
     return (
         <div className="postInput">
           
-                <Avatar  className="postInput__avatar"src="https://pbs.twimg.com/profile_images/1289438305969254402/UBOYNi2s_400x400.jpg"/>
+                <Avatar  className="postInput__avatar"src={user.photoURL}/>
                
                
                 <div className="postInput__top">
@@ -75,7 +77,7 @@ function PostInput() {
                     </div>
                     <div className="postInput__bottom">
                     <input type="file"  onChange={handleChange}
-                    placeholder={`image URL (Optional)`}
+                    placeholder={`image URL (Optional)`} 
                     /> 
                     <button className="imageupload_button"
                              onClick={handleUpload} >

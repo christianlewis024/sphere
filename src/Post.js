@@ -1,6 +1,8 @@
 import React from 'react'
 import {Avatar} from "@material-ui/core";
 import "./Post.css"
+import Moment from 'react-moment';
+import 'moment-timezone';
 
 
 function Post({  imageUrl, username, timestamp, caption, likes, userImage}) {
@@ -12,7 +14,7 @@ function Post({  imageUrl, username, timestamp, caption, likes, userImage}) {
              <Avatar src={userImage} className="post__avatar"/>
              <div className="post__topInfo">
                  <h3>{username}</h3>
-                 <p>{timestamp}</p>
+                 <p><span className="message__timestamp"><Moment format="YYYY-MM-DD HH:mm"tz="Los_Angeles">{new Date(timestamp?.toDate()).toUTCString()}</Moment></span></p>
              </div>
              </div>
              <div className="post__likes">
