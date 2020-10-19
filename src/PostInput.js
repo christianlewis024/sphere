@@ -6,9 +6,9 @@ import "./PostInput.css"
 import {useStateValue} from "./StateProvider";
 
 
-function PostInput() {
+function PostInput({username}) {
     const [image, setImage] = useState(null);
-    const [url, setUrl] = useState("");
+    const [imageUrl, setImageUrl] = useState("");
     const [progress, setProgress] = useState(0);
     const [caption, setCaption] = useState("");
     const [{user}, dispatch] = useStateValue();
@@ -18,6 +18,8 @@ function PostInput() {
           setImage(e.target.files[0]);
         }
       };
+      
+     
       const handleUpload = () => {
         const uploadTask = storage.ref(`images/${image.name}`).put(image);
         uploadTask.on(
@@ -39,20 +41,22 @@ function PostInput() {
               .ref("images")
               .child(image.name)
               .getDownloadURL()
-              .then((url) => {
-                setUrl(url);
+              .then((imageUrl) => {
+                setImageUrl(imageUrl);
     
                 // post image inside db
                 db.collection("posts").add({
-                  imageUrl: url,
+                  imageUrl: imageUrl,
                   caption: caption,
-                  username: user.email,
+                  username: user.displayName,
                   timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                  likes: 0,
                 });
     
                 setProgress(0);
                 setCaption("");
-                setImage(null);
+               
+                
               });
           }
         );
@@ -63,7 +67,7 @@ function PostInput() {
           
                 <Avatar  className="postInput__avatar"src="https://pbs.twimg.com/profile_images/1289438305969254402/UBOYNi2s_400x400.jpg"/>
                
-                <progress className="imageupload_progress" value={progress} max="100" />
+               
                 <div className="postInput__top">
                     <input
                         className="postInput__input"
@@ -75,13 +79,14 @@ function PostInput() {
                     <div className="postInput__bottom">
                     <input type="file"  onChange={handleChange}
                     placeholder={`image URL (Optional)`}
-                    />
+                    /> 
                     <button className="imageupload_button"
                              onClick={handleUpload} >
-                         Select Image
+                        Submit Post
                     </button>
+                    
                     </div>
-                
+                    <progress className="imageupload_progress" value={progress} max="100" />
            
  
             

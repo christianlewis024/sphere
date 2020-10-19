@@ -2,7 +2,7 @@ import React from 'react'
 import {Avatar} from "@material-ui/core";
 import "./Post.css"
 
-function Post({ profilePic, image, username, timestamp, message, likes}) {
+function Post({ profilePic, imageUrl, username, timestamp, caption, likes}) {
     return (
         <div className="post">
          <div className="post__top">
@@ -14,14 +14,14 @@ function Post({ profilePic, image, username, timestamp, message, likes}) {
              </div>
              </div>
              <div className="post__likes">
-         <h3>{likes} likes</h3>
+         <h3>{[likes]} likes</h3>
          </div>
          </div>
          
          <div className="post__bottom">
-             <p>{message}</p>
+             <p>{caption}</p>
           <div className="post__image">
-             <img src={image} alt=""/>
+             <img src={imageUrl} alt=""/>
          </div>
          <div className="post__options">
                     <div className='post__option'>                        

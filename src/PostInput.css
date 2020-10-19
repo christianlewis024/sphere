@@ -5,7 +5,7 @@
   background-color: rgb(132, 132, 218);
   border-radius: 15px;
   box-shadow: 0px 5px 7px -7px rgb(0, 0, 0.75);
-  width: 80%;
+  width: 90%;
   box-shadow: 10px 10px 7px -7px rgba(0, 0, 0, 0.75);
   border: 1px solid #7567ad;
 }
@@ -51,6 +51,9 @@
 .postInput__bottom {
   display: flex;
   justify-content: space-evenly;
+
+  width: 90%;
+  margin: 0 auto;
   margin-bottom: 2%;
 }
 
