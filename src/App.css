@@ -11,3 +11,18 @@ body {
   z-index: -1;
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
+.feed__tabs {
+  display: flex;
+  justify-content: space-evenly;
+  margin-right: 10%;
+  list-style: none;
+}
+.react-tabs__tab {
+  background-color: white;
+  padding: 2%;
+  margin-top: 2%;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 2px solid #7567ad;
+  font-weight: 700;
+}
