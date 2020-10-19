@@ -27,4 +27,26 @@
 .textInput__top {
   display: grid;
   place-items: center;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+.MuiAvatar-root {
+  margin-bottom: 2%;
+}
+.textInput__button {
+  border-radius: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 4%;
+  border: none;
+  cursor: pointer;
+}
+.textInput__url {
+  outline-width: 0;
+  width: 97%;
+  border-radius: 10px;
+  border: none;
+  display: flex;
+  text-align: center;
 }

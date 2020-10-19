@@ -4,7 +4,7 @@ import Post from "./Post"
 import PostInput from "./PostInput"
 import {db} from "./firebase"
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
+// import 'react-tabs/style/react-tabs.css';
 import TextInput from "./TextInput"
 
 function Feed({user}) {
@@ -27,8 +27,10 @@ function Feed({user}) {
         <div className="feed">
             <Tabs>
                 <TabList>
-                    <Tab>New post and or GIF</Tab>
-                    <Tab>Upload a Photo</Tab>
+                  <div className="feed__tabs">
+                    <Tab>Text Post & GIF</Tab>
+                    <Tab>Photo Upload</Tab>
+                    </div>
                 </TabList>
                 <TabPanel>
                 <h2><TextInput/></h2>

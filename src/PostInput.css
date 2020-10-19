@@ -37,7 +37,7 @@
   font-family: "Telex", sans-serif;
   max-width: 90%;
   margin-right: 2%;
-  height: 150px;
+  height: 50px;
 }
 
 .postInput__photoUpload {
@@ -74,4 +74,17 @@
 .postInput__option:hover {
   background-color: #eff2f5;
   border-radius: 20px;
+}
+
+.postInput__button {
+  width: 50%;
+  cursor: pointer;
+  border-radius: 10px;
+  border: none;
+}
+.postInput__file {
+  cursor: pointer;
+}
+.postInput__progress {
+  width: 100%;
 }
