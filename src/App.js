@@ -95,6 +95,7 @@ function App() {
               imageUrl={post.imageUrl}
               userImage={post.userImage}
               timestamp={post.timestamp}
+              likes={post.likes}
             />
           ))}
           </div>

@@ -5,7 +5,7 @@ import { db } from "./firebase";
 import firebase from "firebase";
 import Moment from "react-moment";
 import 'moment-timezone';
-function Post({ user, postId, username, caption, imageUrl, userImage, timestamp}) {
+function Post({ user, likes, postId, username, caption, imageUrl, userImage, timestamp}) {
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
   useEffect(() => {
@@ -42,10 +42,16 @@ function Post({ user, postId, username, caption, imageUrl, userImage, timestamp}
           alt={username}
           src={userImage}
         />
-        <h3>{username}</h3>
-        
+        <h3>{username}</h3> 
       </div>
-      <p><span className="post__timestamp"><Moment format="YYYY-MM-DD HH:mm"tz="Los_Angeles">{new Date(timestamp?.toDate()).toUTCString()}</Moment></span></p>
+      <div className="post__middle">
+        <div className="post__timestamp">
+      <p><span><Moment format="YYYY-MM-DD HH:mm"tz="Los_Angeles">{new Date(timestamp?.toDate()).toUTCString()}</Moment></span></p>
+      </div>
+      <div className="post__likes">
+        <h3>{likes} Likes</h3>
+        </div>
+        </div>
       <p className="post__text">
         "   {caption}   "
       </p>
@@ -58,9 +64,14 @@ function Post({ user, postId, username, caption, imageUrl, userImage, timestamp}
 
       <div className="post__comments">
         {comments.map((comment) => (
-          <p>
-            <b>{comment.username}</b> {comment.text}
-          </p>
+          <div className="post__commentRow">
+          
+            <Avatar className="post__commentAvatar" src={comment.userImage}/>
+            
+            <b>{comment.username}</b> <p className="post__commentText">{comment.text}</p>
+          
+          </div>
+
         ))}
       </div>
           {user && (

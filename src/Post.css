@@ -15,6 +15,12 @@
   align-items: center;
   justify-content: space-between;
 }
+.post__middle {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 4%;
+  margin-right: 4%;
+}
 
 .post__timestamp {
   margin-left: 4%;
@@ -30,18 +36,28 @@
 }
 
 .post__image {
-  width: 100%;
-  margin-left: 2%;
+  width: 90%;
+  margin-left: 5%;
   margin-bottom: 2%;
   border-radius: 20px;
   object-fit: contain;
   max-height: 300px;
+  max-width: 500px;
 }
 .post__comments {
   max-height: 220px;
   overflow-y: scroll;
   margin-left: 4%;
   margin-bottom: 2%;
+}
+.post__commentRow {
+  display: flex;
+}
+.post__commentAvatar {
+  margin-right: 2%;
+}
+.post__commentText {
+  margin-left: 4%;
 }
 .post__input {
   margin-bottom: 2%;
