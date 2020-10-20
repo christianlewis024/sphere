@@ -6,7 +6,7 @@ import { useStateValue } from './StateProvider'
 
 // import 'reactjs-popup/dist/index.css';
 
-function SidebarOption({Icon, title, id,  addChannelOption, addChatOption}) {
+function SidebarPublic({Icon, title, id,  addChannelOption, addChatOption}) {
     const history = useHistory();
     const [{user}] = useStateValue();
 
@@ -18,13 +18,6 @@ function SidebarOption({Icon, title, id,  addChannelOption, addChatOption}) {
         }
     };
     
-    const selectChat = () => {
-        if (id) {
-            history.push(`/room/${id}`)
-        } else {
-            history.push('title')
-        }
-    };
    
 
     const addChannel = () => {
@@ -36,31 +29,9 @@ function SidebarOption({Icon, title, id,  addChannelOption, addChatOption}) {
             })
         }
     }
-    const addChat = () => {
-        const chatName = prompt('Enter the email of the person you wish to message')
-        // const chatName = prompt('please enter the chat name')
-
-        if ( chatName) {
-            db.collection('chats').add({
-                name: chatName + `+${user.email}`,
-                users: [chatName, user.email]
-            })
-        }
-    }
+    
     return (
         <div className="sidebarOption" onClick={addChannelOption ?  addChannel : selectChannel }>
-           {Icon && <Icon className="sidebarOption__icon"/>}
-           {Icon ? (
-               <h3>{title}</h3>
-           ) : (
-               <h3 className="sidebarOption__channel">
-                  <span className="sidebarOption__hash"> # {title}</span>       
-               </h3>
-               
-               
-           )}
-        </div>,
-        <div className="sidebarOption" onClick={addChatOption ?  addChat : selectChat }>
            {Icon && <Icon className="sidebarOption__icon"/>}
            {Icon ? (
                <h3>{title}</h3>
@@ -75,4 +46,4 @@ function SidebarOption({Icon, title, id,  addChannelOption, addChatOption}) {
     )
 }
 
-export default SidebarOption
+export default SidebarPublic
