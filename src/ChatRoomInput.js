@@ -25,7 +25,7 @@ function ChatRoomInput({ channelName, channelId}) {
     return (
         <div className="chatRoom__input">
             <form>
-                <input value={input} onChange={(e)=>setInput(e.target.value)} placeholder={`Message #${channelName}`}
+                <input value={input} onChange={(e)=>setInput(e.target.value)} placeholder={`Enter new message`}
                 />
                 <button type="submit" onClick={sendMessage}>SEND</button>
             </form>
