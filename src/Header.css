@@ -11,7 +11,7 @@
   display: flex;
   align-items: center;
 }
-.header__img > img {
+.header__img {
   height: 60px;
   margin-left: 3%;
 }
@@ -58,4 +58,18 @@ a {
 .header__option:hover {
   background-color: #7567ad;
   cursor: pointer;
+}
+.header__postsLink {
+  font-weight: 600;
+  padding: 3%;
+  color: white;
+  border-radius: 20px;
+}
+.header__postsLink:hover {
+  background-color: #7567ad;
+}
+@media only screen and (max-width: 579px) {
+  .header__right {
+    display: none;
+  }
 }
