@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import "./Sidebar.css"
 import Collapsible from "react-collapsible"
 import MailOutlineIcon from "@material-ui/icons/MailOutline"
@@ -6,23 +6,44 @@ import GroupOutlinedIcon from "@material-ui/icons/GroupOutlined"
 import GroupAddOutlinedIcon from "@material-ui/icons/GroupAddOutlined"
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import {useStateValue} from "./StateProvider";
+import {db} from "./firebase"
+import SidebarOption from "./SidebarOption"
+import AddIcon from "@material-ui/icons/Add"
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+
+
 
 function Sidebar() {
-    const [{user}, dispatch] = useStateValue();
+    const [channels, setChannels] = useState([])
+    const [{user}] = useStateValue();
+
+    useEffect(() => {
+        // run this code ONCE when the sidebar component loads
+        db.collection('rooms').orderBy("name", "asc").onSnapshot(snapshot => (
+            setChannels(
+                snapshot.docs.map(doc => ({
+                    id: doc.id,
+                    name: doc.data().name
+                }))
+            )
+        ))
+    }, [])
+
     return (
         <div className="sidebar">
             <div className="sidebar__top">
                 <div className="sidebar__greeting">
                 <h2> Welcome {user.displayName}</h2>
                 </div>
-                <div className="sidebar__links">
-                <h2>Your Profile</h2>
-                </div>
-                <div className="sidebar__links">
-                <h2>New Post + </h2>
-                </div>            
+              
             </div>
-            <div className="sidebar__bottom">
+            <SidebarOption  Icon={AddIcon} addChannelOption title="New Public Chat"/>
+            {channels.map(channel => (
+                <SidebarOption title={channel.name} id={channel.id}/>
+            ))}
+
+            {/* <div className="sidebar__bottom">
                 <div className="sidebar__inbox">
                 
                 <Collapsible  className="sidebar__collapsible" trigger={<div className="sidebar__collapsibleHeader"><h5>Your Inbox  <MailOutlineIcon/></h5></div>}  triggerlazyRender="true"
@@ -85,7 +106,7 @@ function Sidebar() {
                     </div>
                 </Collapsible>
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }

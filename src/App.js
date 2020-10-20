@@ -10,6 +10,7 @@ import { useStateValue } from "./StateProvider";
 import {auth, db} from "./firebase"
 import Post from "./Post"
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import ChatRooms from "./ChatRooms"
 
 function App() {
   const [{user}, dispatch] = useStateValue();
@@ -64,13 +65,20 @@ function App() {
         ) : (
           <>
         <Header/>
-              <div className="app__body">
-              <div className="app__banner">
+          <div className="app__body">
+            <div className="app__banner">
                 <img src="https://images.unsplash.com/photo-1592185152497-03502ba153ae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" alt=""/>
-              </div>
+            </div>
                 <Sidebar/>
-                <div className="app__posts">
-             
+                <Switch>
+                <Route path="/room/:roomId">
+          <ChatRooms/>
+         
+        </Route>
+        <Route path="/">
+         
+       
+                <div className="app__posts">       
                 <Tabs>
                 <TabList>
                   <div className="feed__tabs">
@@ -99,7 +107,11 @@ function App() {
             />
           ))}
           </div>
-                
+          </Route>
+         
+        
+          
+        </Switch>
               </div>
           </>
           )}

@@ -31,7 +31,7 @@ function Header() {
                    <h4>Friends</h4>
                </div>
                <div className="header__option">
-                   <h4>Posts</h4>
+               <Link to="/">Posts</Link>
                </div>
                <div className="header__option">
                <Link to={!user && "/login"} className="header__link">
