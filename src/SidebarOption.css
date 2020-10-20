@@ -16,7 +16,10 @@
 }
 
 .sidebarOption__channel {
+  max-width: 90%;
   padding: 10px 0;
+  overflow-wrap: break-word;
+  margin-left: 2%;
 }
 .sidebarOption__hash {
   padding: 10px;

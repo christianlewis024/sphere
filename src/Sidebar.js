@@ -52,6 +52,7 @@ function Sidebar() {
                 </div>
               
             </div>
+            
             <SidebarPublic  Icon={AddIcon} addChannelOption title="New Public Chat"/>
             {channels.map(channel => (
                 <SidebarPublic title={channel.name} id={channel.id}/>

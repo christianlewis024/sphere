@@ -16,9 +16,9 @@ function Header() {
     return (
         <div className="header">
            <div className="header__left">
-               <div className="header__img">
-           <img src="logowithborder.png" alt=""/>
-           </div>
+               
+               <Link to="/"><img className="header__img" src="logowithborder.png" alt=""/></Link>
+           
            <div className="header__input">
                <input placeholder="Search The Sphere"/> 
            </div>
@@ -30,7 +30,7 @@ function Header() {
                <div className="header__option">
                    <h4>Friends</h4>
                </div>
-               <div className="header__option">
+               <div className="header__postsLink">
                <Link to="/">Posts</Link>
                </div>
                <div className="header__option">
