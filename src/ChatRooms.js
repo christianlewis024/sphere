@@ -18,26 +18,26 @@ function ChatRooms() {
                 setRoomDetails(snapshot.data())
             ))
         }
-        db.collection('rooms').doc(roomId).collection('messages').orderBy('timestamp', 'asc').onSnapshot(snapshot => setRoomMessages(snapshot.docs.map(doc => doc.data())))
+        db.collection('rooms').doc(roomId).collection('messages').orderBy('timestamp', 'desc').onSnapshot(snapshot => setRoomMessages(snapshot.docs.map(doc => doc.data())))
     }, [roomId])
    
     return (
-        <div className="chatRoom">
-          {/* <h2>You are in the {roomId} chatRoom 🧖‍♂️ </h2> */}
-          <div className="chatRoom__header">
-              <div className="chatRoom__headerLeft">
-                  <h4 className="chatRoom__channelName">
+        <>
+        <div className="chatRooms__container">
+        <div className="chatRooms">
+          {/* <h2>You are in the {roomId} chatRooms 🧖‍♂️ </h2> */}
+          <div className="chatRooms__header">
+              <div className="chatRooms__headerLeft">
+                  <h4 className="chatRooms__channelName">
                     <strong>#{roomDetails?.name}</strong>
-                    <StarBorderOutlinedIcon/>
+                    
                   </h4>
-              </div>
-              <div className="chatRoom__headerRight">
-                  <p>
-                <InfoOutlinedIcon/> Details
-                </p>
-              </div>
+              </div>         
           </div>
-          <div className="chatRoom__messages">
+          <div className="chatRooms__input">
+          <ChatRoomInput channelName={roomDetails?.name} channelId={roomId} />
+          </div>
+          <div className="chatRooms__messages">
             {roomMessages.map(({message, timestamp, user, userImage}) => (
                 <Message 
                 message={message}
@@ -47,11 +47,14 @@ function ChatRooms() {
                 />
             ))}
           </div>
-            <ChatRoomInput channelName={roomDetails?.name} channelId={roomId} />
+          
 
 
 
         </div>
+        
+          </div>
+          </>
     )
 }
 

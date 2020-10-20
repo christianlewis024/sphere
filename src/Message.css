@@ -1,12 +1,21 @@
 .message {
-  display: flex;
   align-items: center;
   padding: 20px;
+  width: 90%;
 }
-.message > img {
+.message__header {
+  display: flex;
+  margin-bottom: 2%;
+  padding: 2%;
+}
+.message__message {
+  overflow-wrap: break-word;
+}
+.message__header > img {
   height: 50px;
   width: 50px;
   object-fit: contain;
+  margin-right: 2%;
 }
 .message__info {
   padding-left: 10px;
@@ -16,4 +25,5 @@
   color: gray;
   font-weight: 300;
   font-size: 13px;
+  margin-left: 2%;
 }
