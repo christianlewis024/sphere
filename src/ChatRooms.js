@@ -11,7 +11,9 @@ import ChatRoomInput from "./ChatRoomInput"
 function ChatRooms() {
     const {roomId} = useParams();
     const [roomDetails, setRoomDetails] = useState(null)
+    const [chatDetails, setChatDetails] = useState(null)
     const [roomMessages, setRoomMessages] = useState([])
+    const [chatMessages, setChatMessages] = useState([])
     useEffect(() => {
         if (roomId) {
             db.collection('rooms').doc(roomId).onSnapshot(snapshot => (
@@ -20,6 +22,8 @@ function ChatRooms() {
         }
         db.collection('rooms').doc(roomId).collection('messages').orderBy('timestamp', 'desc').onSnapshot(snapshot => setRoomMessages(snapshot.docs.map(doc => doc.data())))
     }, [roomId])
+
+
    
     return (
         <>
