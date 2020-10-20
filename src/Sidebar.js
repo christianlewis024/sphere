@@ -16,6 +16,7 @@ import 'reactjs-popup/dist/index.css';
 
 function Sidebar() {
     const [channels, setChannels] = useState([])
+    const [chats, setChats] = useState([])
     const [{user}] = useStateValue();
 
     useEffect(() => {
@@ -29,6 +30,18 @@ function Sidebar() {
             )
         ))
     }, [])
+    useEffect(() => {
+        // run this code ONCE when the sidebar component loads
+        db.collection('chats').where('users', 'array-contains', user.email).onSnapshot(snapshot => (
+            setChats(
+                snapshot.docs.map(doc => ({
+                    id: doc.id,
+                    name: doc.data().name
+                }))
+            )
+        ))
+    }, [])
+
 
     return (
         <div className="sidebar">
@@ -40,6 +53,10 @@ function Sidebar() {
             </div>
             <SidebarOption  Icon={AddIcon} addChannelOption title="New Public Chat"/>
             {channels.map(channel => (
+                <SidebarOption title={channel.name} id={channel.id}/>
+            ))}
+            <SidebarOption  Icon={AddIcon} addChannelOption title="New Private Chat"/>
+            {chats.map(channel => (
                 <SidebarOption title={channel.name} id={channel.id}/>
             ))}
 
