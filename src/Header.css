@@ -49,6 +49,11 @@
   color: white;
   border-radius: 20px;
 }
+.header__logout {
+  padding: 3%;
+  color: white;
+  border-radius: 20px;
+}
 
 a {
   text-decoration: none;
@@ -56,6 +61,10 @@ a {
 }
 
 .header__option:hover {
+  background-color: #7567ad;
+  cursor: pointer;
+}
+.header__optionlogout:hover {
   background-color: #7567ad;
   cursor: pointer;
 }
@@ -69,6 +78,9 @@ a {
   background-color: #7567ad;
 }
 @media only screen and (max-width: 579px) {
+  .header__option {
+    display: none;
+  }
   .header__right {
     display: none;
   }
