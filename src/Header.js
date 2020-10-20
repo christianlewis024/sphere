@@ -33,7 +33,7 @@ function Header() {
                <div className="header__postsLink">
                <Link to="/">Posts</Link>
                </div>
-               <div className="header__option">
+               <div className="header__logout">
                <Link to={!user && "/login"} className="header__link">
             <div onClick={login}>           
             <span>{user ? 'Log Out' : 'Sign In'}</span>
