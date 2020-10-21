@@ -11,6 +11,7 @@ import {auth, db} from "./firebase"
 import Post from "./Post"
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import ChatRooms from "./ChatRooms"
+import Profile from "./Profile"
 
 function App() {
   const [{user}, dispatch] = useStateValue();
@@ -75,7 +76,9 @@ function App() {
           <ChatRooms/>
          
         </Route>
-                
+                <Route path="/profile">
+                  <Profile/>
+                </Route>
         <Route path="/">
          
        
