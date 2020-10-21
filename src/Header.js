@@ -46,8 +46,10 @@ function Header() {
                
            
                <div className="header__avatar">
+                <Link to="/profile">
                <Avatar
                src={user.photoURL}/>
+               </Link>
                </div>
            </div>
            

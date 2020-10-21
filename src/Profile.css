@@ -1,0 +1,35 @@
+.profile {
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  padding: 5%;
+
+  margin-bottom: 500px;
+}
+.profile__top {
+  border: black solid 1px;
+  background-color: rgba(255, 255, 255, 0.274);
+  border-radius: 15px;
+  padding: 5%;
+  padding-left: 17%;
+  padding-right: 17%;
+  display: flex;
+  flex-direction: column;
+}
+.profile__emailP {
+  font-size: 10px;
+}
+.profile__pic {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.profile__middle .profile__avatar {
+  height: 100px;
+  width: 100px;
+}
+
+h4 {
+  margin-bottom: 4%;
+}

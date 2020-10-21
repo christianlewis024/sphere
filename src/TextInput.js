@@ -25,7 +25,8 @@ function TextInput() {
            userImage: user.photoURL,
            username: user.displayName,
            imageUrl: imageUrl, 
-           likes: 0
+           likes: 0,
+           userEmail: user.email
         })  
 
         setInput("");

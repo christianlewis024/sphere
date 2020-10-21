@@ -52,7 +52,8 @@ function PostInput() {
                   username: user.displayName,
                   timestamp: firebase.firestore.FieldValue.serverTimestamp(),
                   likes: 0,
-                  userImage: user.photoURL
+                  userImage: user.photoURL,
+                  userEmail: user.email
                 });
     
                 setProgress(0);
