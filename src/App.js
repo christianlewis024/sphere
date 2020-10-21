@@ -105,6 +105,7 @@ function App() {
               userImage={post.userImage}
               timestamp={post.timestamp}
               likes={post.likes}
+              likedBy={post.likedBy}
             />
           ))}
           </div>
