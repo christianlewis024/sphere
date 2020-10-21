@@ -11,9 +11,15 @@
   display: flex;
   margin-left: 4%;
   margin-top: 2%;
-  width: 27%;
+  width: 90%;
   align-items: center;
   justify-content: space-between;
+}
+.post__usernameAvatar {
+  display: flex;
+}
+.post__usernameAvatar > h3 {
+  margin-left: 4%;
 }
 .post__middle {
   display: flex;

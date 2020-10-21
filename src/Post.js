@@ -63,23 +63,25 @@ function Post({ user, likes, likedBy, postId, username, caption, imageUrl, userI
   return (
     <div className="post">
       <div className="post__header">
+        <div className="post__usernameAvatar">
         <Avatar
           className="post__avatar"
           alt={username}
           src={userImage}
         />
         <h3>{username}</h3> 
-      </div>
-      <div className="post__middle">
-        <div className="post__timestamp">
-      <p><span><Moment format="YYYY-MM-DD HH:mm">{new Date(timestamp?.toDate()).toUTCString()}</Moment></span></p>
-      </div>
-      <div className="post__likes">
-        
-     
+        </div>
+        <div className="post__likes">
         <h3>{likeCount.length} Likes</h3>
         <div  onClick={addLike} className="post__addLikes"><FavoriteIcon/></div>
         </div>
+      </div>
+      <div className="post__middle">
+        <div className="post__timestamp">
+      <p><span><Moment format="YYYY-MM-DD HH:mm">{new Date(timestamp?.toDate()).toUTCString()}</Moment></span></p>      
+      </div>
+      
+     
         </div>
       <p className="post__text">
         "   {caption}   "
