@@ -5,9 +5,14 @@ import { db } from "./firebase";
 import firebase from "firebase";
 import Moment from "react-moment";
 import 'moment-timezone';
-function Post({ user, likes, postId, username, caption, imageUrl, userImage, timestamp}) {
+import FavoriteIcon from '@material-ui/icons/Favorite';
+
+
+
+function Post({ user, likes, likedBy, postId, username, caption, imageUrl, userImage, timestamp}) {
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
+  const [likeCount, setLikeCount] = useState(0);
   useEffect(() => {
     
     if (postId) {
@@ -17,6 +22,19 @@ function Post({ user, likes, postId, username, caption, imageUrl, userImage, tim
         .orderBy("timestamp", "desc")
         .onSnapshot((snapshot) => {
           setComments(snapshot.docs.map((doc) => doc.data()));
+        });
+    }
+   
+  }, [postId]);
+
+  useEffect(() => {
+    
+    if (postId) {
+      db.collection("posts")
+        .doc(postId)
+        .collection("likedBy")        
+        .onSnapshot((snapshot) => {
+          setLikeCount(snapshot.docs.map((doc) => doc.data()));
         });
     }
    
@@ -33,7 +51,15 @@ function Post({ user, likes, postId, username, caption, imageUrl, userImage, tim
     });
     setComment("");
   };
+  const addLike = (e) => {
+    e.preventDefault();
 
+    db.collection("posts").doc(postId).collection("likedBy").doc(user.email).set({
+      
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      likedBy: user.email
+    })
+  }
   return (
     <div className="post">
       <div className="post__header">
@@ -46,10 +72,13 @@ function Post({ user, likes, postId, username, caption, imageUrl, userImage, tim
       </div>
       <div className="post__middle">
         <div className="post__timestamp">
-      <p><span><Moment format="YYYY-MM-DD HH:mm"tz="Los_Angeles">{new Date(timestamp?.toDate()).toUTCString()}</Moment></span></p>
+      <p><span><Moment format="YYYY-MM-DD HH:mm">{new Date(timestamp?.toDate()).toUTCString()}</Moment></span></p>
       </div>
       <div className="post__likes">
-        <h3>{likes} Likes</h3>
+        
+     
+        <h3>{likeCount.length} Likes</h3>
+        <div  onClick={addLike} className="post__addLikes"><FavoriteIcon/></div>
         </div>
         </div>
       <p className="post__text">
