@@ -5,7 +5,9 @@ import { db } from "./firebase";
 import firebase from "firebase";
 import Moment from "react-moment";
 import 'moment-timezone';
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+
+
 
 function Post({ user, likes, likedBy, postId, username, caption, imageUrl, userImage, timestamp}) {
   const [comments, setComments] = useState([]);
@@ -73,8 +75,10 @@ function Post({ user, likes, likedBy, postId, username, caption, imageUrl, userI
       <p><span><Moment format="YYYY-MM-DD HH:mm">{new Date(timestamp?.toDate()).toUTCString()}</Moment></span></p>
       </div>
       <div className="post__likes">
-        <button onClick={addLike}>+Like</button>
+        
+     
         <h3>{likeCount.length} Likes</h3>
+        <div  onClick={addLike} className="post__addLikes"><FavoriteIcon/></div>
         </div>
         </div>
       <p className="post__text">

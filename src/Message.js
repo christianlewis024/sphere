@@ -1,5 +1,6 @@
 import React from 'react'
 import "./Message.css"
+import Moment from "react-moment"
 
 
 function Message({ message, timestamp, user, userImage}) {
@@ -8,7 +9,7 @@ function Message({ message, timestamp, user, userImage}) {
             <div className="message__header">
             <img src={userImage} alt=""/>
             <h4>
-                    {user}<span className="message__timestamp">{new Date(timestamp?.toDate()).toUTCString()}</span>
+                    {user}<span className="message__timestamp"><Moment format="YYYY-MM-DD HH:mm">{new Date(timestamp?.toDate()).toUTCString()}</Moment></span>
 
                 </h4>
                 </div>
