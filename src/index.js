@@ -4,14 +4,17 @@ import './index.css';
 import App from './App';
 import {StateProvider} from "./StateProvider"
 import reducer, { initialState } from './reducer';
+import { HashRouter } from 'react-router-dom'
 
 
 ReactDOM.render(
-  <React.StrictMode>
+
     <StateProvider initialState={initialState} reducer={reducer}>
+      <HashRouter>
     <App />
-    </StateProvider>
-  </React.StrictMode>,
+    </HashRouter>
+    </StateProvider>,
+  
   document.getElementById('root')
 );
 
