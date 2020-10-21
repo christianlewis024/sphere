@@ -1,14 +1,17 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {useStateValue} from "./StateProvider"
 import {Avatar} from "@material-ui/core"
 import "./Profile.css"
-import { auth } from './firebase'
+import { db } from './firebase'
+import Post from "./Post"
 
 
 function Profile() {
     const [{user}] = useStateValue()
     const [username, setUsername] = useState("");
     const [userImage, setUserImage] = useState('')
+    const [posts, setPosts] = useState([]);
+    
     
 
     const updatePic = e => {
@@ -31,6 +34,20 @@ function Profile() {
     
 
     }
+    useEffect(() => {
+        // code runs here
+        db.collection("posts").where("username", "==", user.displayName ).onSnapshot((snapshot) => {
+            setPosts(
+              snapshot.docs.map((doc) => ({
+                id: doc.id,
+                post: doc.data(),
+              }))
+            ) ;
+          });
+       
+      }, [] );
+      console.log(posts)
+     
     
     return (
         <div className="profile">
@@ -47,6 +64,23 @@ function Profile() {
                     <h4>Username: {user.displayName}</h4>     
                     <input placeholder="enter new username" type="text" value={username} onChange={(e) => setUsername(e.target.value)} /> <button onClick={updateUsername}>submit</button> 
                 </div>      
+            </div>
+            <div className="profile__bottom">
+                <h2>Your Posts:</h2>
+                {posts.map(({ id, post }) => (
+            <Post
+              user={user}
+              key={id}
+              postId={id}
+              username={post.username}
+              caption={post.caption}
+              imageUrl={post.imageUrl}
+              userImage={post.userImage}
+              timestamp={post.timestamp}
+              likes={post.likes}
+              likedBy={post.likedBy}
+            />
+          ))}
             </div>
         </div>
     )
