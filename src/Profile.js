@@ -36,7 +36,7 @@ function Profile() {
     }
     useEffect(() => {
         // code runs here
-        db.collection("posts").where("username", "==", user.displayName ).onSnapshot((snapshot) => {
+        db.collection("posts").where("userEmail", "==", user.email ).onSnapshot((snapshot) => {
             setPosts(
               snapshot.docs.map((doc) => ({
                 id: doc.id,
@@ -52,21 +52,34 @@ function Profile() {
     return (
         <div className="profile">
             <div className="profile__top">
-                <h2>Your Profile:</h2>
-                <h4>Email: {user.email}</h4>                
-            </div>
-            <div className="profile__middle">
+                <h2>Edit Your Profile Details:</h2>
+                <br></br>
+                <hr></hr>
+                <br></br>
+                <h4>Email: {user.email}</h4>
+                <p className="profile__emailP">*cannot be changed*</p> 
+                <br></br>
+                <hr></hr>
+                <br></br>
+                <div className="profile__middle">
                 <div className="profile__pic">
-                    <Avatar className="profile__avatar" src={user.photoURL}/>
+                    <Avatar className="profile__avatar" src={user.photoURL}/><span>Your Profile Pic</span>
+                    </div>
                     <input placeholder="new photo URL" type="text" value={userImage} onChange={(e) => setUserImage(e.target.value)}/><button onClick={updatePic} >submit</button>
-                </div>
+               
+                <br></br>
+                <br></br>
+                <hr></hr>
+                <br></br>
                 <div className="profile__username">
                     <h4>Username: {user.displayName}</h4>     
                     <input placeholder="enter new username" type="text" value={username} onChange={(e) => setUsername(e.target.value)} /> <button onClick={updateUsername}>submit</button> 
                 </div>      
+            </div>               
             </div>
+           
             <div className="profile__bottom">
-                <h2>Your Posts:</h2>
+                <center><h2>Your Posts:</h2></center>
                 {posts.map(({ id, post }) => (
             <Post
               user={user}

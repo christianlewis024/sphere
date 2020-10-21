@@ -5,6 +5,9 @@
 body {
   font-family: "Telex", sans-serif;
 }
+.app__posts {
+  margin: 0 auto;
+}
 .app__banner > img {
   position: absolute;
   width: 100%;
