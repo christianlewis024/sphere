@@ -4,7 +4,7 @@ import Header from "./Header"
 import Sidebar from "./Sidebar"
 import TextInput from "./TextInput"
 import PostInput from "./PostInput"
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route, HashRouter } from "react-router-dom";
 import Login from "./Login";
 import { useStateValue } from "./StateProvider";
 import {auth, db} from "./firebase"
@@ -60,7 +60,7 @@ function App() {
 
   return (
     <div className="app">    
-      <Router>
+      <HashRouter>
       {!user ? (
           <Login/>
         ) : (
@@ -121,7 +121,7 @@ function App() {
           </>
           )}
      
-      </Router>
+      </HashRouter>
     </div>
   );
 }
